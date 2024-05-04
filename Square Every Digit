@@ -1,1 +1,22 @@
-
+unsigned long long square_digits (unsigned n)
+{
+  int numst[100];
+  int result[100];
+  unsigned long long sum = 0;
+  int a =0;
+  while(n>0){
+    numst[a++]=n%10;
+    n/=10;
+  }
+  for (int i = 0; i < a; i++) {
+        result[i] = numst[i] * numst[i];
+    }
+  for (int i = a - 1; i >= 0; i--) {
+        if(numst[i]>3){
+          sum = sum * 100 + result[i];
+        }else{
+          sum = sum * 10 + result[i];
+        }
+  }
+	return sum;
+}
