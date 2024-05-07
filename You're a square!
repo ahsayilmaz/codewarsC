@@ -1,0 +1,11 @@
+#include <stdbool.h>
+#include <math.h>
+
+bool is_square(int n) {
+  if(n<0){
+    return false;
+  }else{
+    int num=sqrt(n);
+    return num*num==n;
+  }
+}
