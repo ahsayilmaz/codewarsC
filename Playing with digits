@@ -1,0 +1,26 @@
+int digPow(int n, int p) {
+	double sum=0;
+  double powerSum=1;
+  int digitCount=0;
+  int temp=n;
+  while(temp>0){
+    temp/=10;
+    digitCount++;
+  }
+  temp=n;
+  while(temp>0){
+    for(int i =0;i<p+digitCount-1;i++){
+      powerSum=powerSum*(temp%10);
+    }
+    sum+=powerSum;
+    temp/=10;
+    p--;
+    powerSum=1;
+  }
+  int intSum=sum;
+  if(intSum%n==0&&(sum/n)>0){
+    return sum/n;
+  }else{
+    return -1;
+  }
+}
