@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <string.h>
+
+char *human_readable_time (unsigned seconds, char *time_string)
+{ 
+  strcpy(time_string, "00:00:00");
+
+    // Calculate hours
+    if (seconds >= 3600) {
+        int hours = seconds / 3600;
+        sprintf(time_string, "%02d", hours);
+        seconds %= 3600;
+    }
+
+    // Calculate minutes
+    if (seconds >= 60) {
+        int minutes = seconds / 60;
+        sprintf(time_string + 2, ":%02d", minutes);
+        seconds %= 60;
+    }else{
+      sprintf(time_string + 2, ":0%d", 0);
+    }
+
+    // Add remaining seconds
+    if (seconds < 10) {
+        sprintf(time_string + 5, ":0%d", seconds);
+    } else if(seconds==0){
+        sprintf(time_string + 5, ":0%d", 0);
+    }else{
+      sprintf(time_string + 5, ":%d", seconds);
+    }
+    time_string[8] = '\0';
+    return time_string;
+}
